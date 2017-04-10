@@ -12,6 +12,8 @@ if not m then
 else
   m:close()
 end
+
+-- muodostetaan yhteys mqtt-broakeriin
 m:connect(mqtt_broker , mqtt_port, 0, 1, function(conn)
     print("Yhteys mqtt-brokeriin muodostettu!")
     m:publish("status", mqtt_clientid .. " yhdistetty!", 0, 0)
@@ -52,15 +54,15 @@ function viestinkasittelija(topic, viesti)
     g = tonumber(viesti:sub(4, 5), 16)
     b = tonumber(viesti:sub(6, 7), 16)
     buffer:fill(r, g, b)
-  elseif viesti:upper() == "ON" then
+  elseif viesti:upper() == "TRUE" then
     buffer:fill(r, g, b)
-  elseif viesti:upper() == "OFF" then
+  elseif viesti:upper() == "FALSE" then
     buffer:fill(0, 0, 0)
   end
   ws2812.write(buffer)
 end
 
--- tehdään alustukset led-nauhaa varten
+-- tehdään alustukset lednauhaa varten
 if not buffer then
   ws2812.init()
   buffer = ws2812.newBuffer(100, 3)
