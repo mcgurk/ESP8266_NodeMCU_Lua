@@ -9,15 +9,16 @@ local led = 4
 
 gpio.mode(led, gpio.OUTPUT)
 
-if not m then 
+if not m then -- varmistetaan, ettei oteta yhteyttä useaan kertaan päällekkäin
   m = mqtt.Client(mqtt_clientid, 120, mqtt_user, mqtt_pwd)
 else
   m:close()
 end
 m:connect(mqtt_broker , mqtt_port, 0, 1, function(conn)
+    print("Yhteys mqtt-brokeriin muodostettu!")
     m:publish("status", mqtt_clientid .. " yhdistetty!", 0, 0)
-    m:subscribe(topic, 0, function(conn)
-        print("Tilattu " .. topic .. "-topic")
+    m:subscribe(mqtt_topic, 0, function(conn)
+        print("Tilattu " .. mqtt_topic .. "-topic")
       end)
     m:on('message', function(conn, topic, viesti)
         print("mqtt-viesti - topic:" .. topic .. ", viesti:" .. viesti)
@@ -35,7 +36,7 @@ local lukko = false
 gpio.mode(nappi, gpio.INT)
 gpio.trig(nappi, "down", function()
     if not lukko then
-      m:publish(topic, "Nappi!", 0, 0)
+      m:publish("status", mqtt_clientid .. " - Nappi!", 0, 0)
       print("Nappi!")
       lukko = true
       tmr.alarm(0, 1000, tmr.ALARM_SINGLE, function()
