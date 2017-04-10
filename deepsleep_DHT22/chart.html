@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      //google.charts.setOnLoadCallback(drawChart);
+      google.charts.setOnLoadCallback(drawSheetName);
+
+    function drawSheetName() {
+      //var queryString = encodeURIComponent('SELECT A, E OFFSET 6');
+      var queryString = encodeURIComponent('SELECT A, F OFFSET 6');
+
+      var query = new google.visualization.Query(
+          'https://docs.google.com/spreadsheets/d/1i-Wp3HhsoKQBPyypd1eQPu53paDnm459OESyT7HETxx/gviz/tq?sheet=Taulukko11&headers=1&tq=' + queryString);
+      query.send(handleSampleDataQueryResponse);
+    }
+
+    function handleSampleDataQueryResponse(response) {
+      if (response.isError()) {
+        alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+        return;
+      }
+
+	   var options = {
+	    title: 'ESP-201, DHT22, 3xEneloop AA (รก 1900mAh)',
+        hAxis: {
+          title: 'Time',
+		  format: 'dd/MM/yy HH:mm'
+        },
+        vAxis: {
+          title: 'Voltage [mV]',
+		  format: ''
+        },
+		height: 800
+      };
+	  
+      var data = response.getDataTable();
+	  data.setColumnLabel(1, '1xEneloop AA');
+      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+      chart.draw(data, options);
+    }
+
+    </script>
+  </head>
+
+  <body>
+    <!--Div that will hold the pie chart-->
+    <div id="chart_div"></div>
+  </body>
+</html>
+
