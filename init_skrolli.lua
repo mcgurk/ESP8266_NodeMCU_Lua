@@ -1,6 +1,6 @@
 print("init.lua - Skrolli")
 
-local tiedosto = "main.lua" -- Sen tiedoston nimi, joka suoritetaan initin jälkeen
+local tiedosto = "ohjelma.lua" -- Sen tiedoston nimi, joka suoritetaan initin jälkeen
 local nappi = 3 -- NodeMCU:n Flash-nappi
 local led = 4 -- NodeMCU:n sininen led
 
@@ -29,6 +29,7 @@ gpio.trig(nappi, "down", function()
 tmr.alarm(1, 2000, tmr.ALARM_AUTO, function() 
     if wifi.sta.getip() then
       tmr.stop(0) -- pysäytetään ledin vilkutusajastin
+      tmr.stop(1) -- pysäytetään verkkoyhteyden odotusajastin
       tmr.stop(2) -- pysäytetään WiFi-asetustukiasemajastin
       gpio.write(led, gpio.HIGH) -- sammutetaan led
       print("IP: " .. wifi.sta.getip())
