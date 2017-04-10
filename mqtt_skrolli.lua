@@ -1,13 +1,6 @@
-local mqtt_broker = "xxxxx.xxxxx.xxx"
-local mqtt_port = 1883
-local mqtt_user = "xxxxx"
-local mqtt_pwd  = "xxxxx"
-local mqtt_clientid = "NodeMCU-" .. string.format('%x', node.chipid())
-local mqtt_topic = "NodeMCU"
-local nappi = 3
-local led = 4
+--local led = 4
 
-gpio.mode(led, gpio.OUTPUT)
+--gpio.mode(led, gpio.OUTPUT)
 
 if not m then -- varmistetaan, ettei oteta yhteyttä useaan kertaan päällekkäin
   m = mqtt.Client(mqtt_clientid, 120, mqtt_user, mqtt_pwd)
@@ -25,9 +18,11 @@ m:connect(mqtt_broker , mqtt_port, 0, 1, function(conn)
         if string.upper(viesti) == "PING" then
           m:publish("status", mqtt_clientid .. " vastaa pingiin!", 0, 0)
         elseif string.upper(viesti) == "ON" then
-          gpio.write(led, gpio.LOW)
+          --gpio.write(led, gpio.LOW)
         elseif string.upper(viesti) == "OFF" then
-          gpio.write(led, gpio.HIGH)
+          --gpio.write(led, gpio.HIGH)
+        else
+          kasittele_viesti(topic, viesti)
         end
       end)
   end)
@@ -44,3 +39,25 @@ gpio.trig(nappi, "down", function()
         end)
     end
   end)
+
+PIXELCOUNT = 50
+
+function kasittele_viesti(topic, viesti)
+  print("viestinkäsittelijä")
+  --buffer:fill(128, 0, 0)
+  --buffer:fill(math.random(100), math.random(100), math.random(100))
+  if viesti:sub(1, 1) == "#" then
+    local r = tonumber(string.sub(viesti, 2, 3), 16)
+    local g = tonumber(string.sub(viesti, 4, 5), 16)
+    local b = tonumber(string.sub(viesti, 6, 7), 16)
+    buffer:fill(r, g, b)
+    ws2812.write(buffer)
+  end
+end
+
+
+if not buffer then
+  print("ws2812 init")
+  ws2812.init()
+  buffer = ws2812.newBuffer(PIXELCOUNT, 3)
+end
