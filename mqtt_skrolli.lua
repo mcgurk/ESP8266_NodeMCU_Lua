@@ -48,9 +48,9 @@ local b = 100
 -- täällä käsitellään käyttäjän mqtt-viestit
 function viestinkasittelija(topic, viesti)
   if viesti:sub(1, 1) == "#" then
-    local r = tonumber(viesti:sub(2, 3), 16)
-    local g = tonumber(viesti:sub(4, 5), 16)
-    local b = tonumber(viesti:sub(6, 7), 16)
+    r = tonumber(viesti:sub(2, 3), 16)
+    g = tonumber(viesti:sub(4, 5), 16)
+    b = tonumber(viesti:sub(6, 7), 16)
     buffer:fill(r, g, b)
   elseif viesti:upper() == "ON" then
     buffer:fill(r, g, b)
@@ -60,7 +60,7 @@ function viestinkasittelija(topic, viesti)
   ws2812.write(buffer)
 end
 
--- tehdään alustukset lednauhaa varten
+-- tehdään alustukset led-nauhaa varten
 if not buffer then
   ws2812.init()
   buffer = ws2812.newBuffer(100, 3)
