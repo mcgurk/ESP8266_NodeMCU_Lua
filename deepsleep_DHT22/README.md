@@ -15,6 +15,11 @@ If no wifi-connection
 HTTP client: DNS failed for maker.ifttt.com
 comes in 5s.
 
+#### Settings (must do one time only)
+- adc.force_init_mode(adc.INIT_VDD33)
+- wifi.setmode(wifi.STATION)
+- wifi.sta.config("ssid","passwd")
+
 #### IFTTT
 
 - ifttt.com
@@ -23,7 +28,7 @@ comes in 5s.
 - give name for applet
 - that: Google Drive -> Add row to spreadsheet
 - Spreadsheet name:
-- Formatted row:
+- Formatted row (3xAA 1.2V Eneloop 1900mAh):
 ```
 =TIMEVALUE(SUBSTITUTE("{{OccurredAt}}";" at ";" "))+DATEVALUE(SUBSTITUTE("{{OccurredAt}}";" at ";" ")) ||| {{EventName}} ||| {{Value1}} ||| {{Value2}} ||| {{Value3}} ||| =ROUND({{Value3}}/3)
 ```
