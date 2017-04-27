@@ -15,7 +15,7 @@ If no wifi-connection
 HTTP client: DNS failed for maker.ifttt.com
 comes in 5s.
 
-#### Lua
+### Lua
 https://nodemcu-build.com/
 - ADC
 - DHT
@@ -25,12 +25,16 @@ https://nodemcu-build.com/
 https://github.com/marcelstoer/nodemcu-pyflasher
 - ESP-201: RTS -> RST, DTR -> IO0
 
-#### Settings (must do one time only)
+### Settings (must do one time only)
 - adc.force_init_mode(adc.INIT_VDD33)
 - wifi.setmode(wifi.STATION)
 - wifi.sta.config("ssid","passwd")
 
-#### IFTTT
+Test:
+- print(wifi.sta.getip())
+- print(adc.readvdd33(0))
+
+### IFTTT
 
 - ifttt.com
 - My Applets -> New Applet
@@ -55,13 +59,13 @@ Google Docs doesn't recognize date-/time-format without this:
 =TIMEVALUE(SUBSTITUTE(INDIRECT("A"&ROW())," at "," "))+DATEVALUE(SUBSTITUTE(INDIRECT("A"&ROW())," at "," "))
 ```
 
-#### Google Docs Spreadsheet date-/time-settings
+### Google Docs Spreadsheet date-/time-settings
 
 - File -> Spreadsheet settings -> Language -> United States
 - File -> Spreadsheet settings -> Always use English function names
 - Date-/time-column: Format -> number -> date and time
 
 
-#### Chart
+### Chart
 - https://developers.google.com/chart/interactive/docs/quick_start
 - https://developers.google.com/chart/interactive/docs/spreadsheets#sheet-name
