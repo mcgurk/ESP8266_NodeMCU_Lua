@@ -15,6 +15,13 @@ If no wifi-connection
 HTTP client: DNS failed for maker.ifttt.com
 comes in 5s.
 
+#### Lua
+https://nodemcu-build.com/
+- ADC
+- DHT
+- HTTP
+- (adc dht file gpio http net node tmr uart wifi)
+
 #### Settings (must do one time only)
 - adc.force_init_mode(adc.INIT_VDD33)
 - wifi.setmode(wifi.STATION)
