@@ -64,6 +64,8 @@ Google Docs doesn't recognize date-/time-format without this:
 - File -> Spreadsheet settings -> Language -> United States
 - File -> Spreadsheet settings -> Always use English function names
 - Date-/time-column: Format -> number -> date and time
+- Number data: Format -> number -> number
+- Try to avoid "automatic"-format cells
 
 
 ### Chart
