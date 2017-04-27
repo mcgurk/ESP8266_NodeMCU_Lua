@@ -16,6 +16,21 @@ HTTP client: DNS failed for maker.ifttt.com
 comes in 5s.
 
 #### IFTTT
+
+- ifttt.com
+- My Applets -> New Applet
+- this: Maker Webhooks -> Receive a web request
+- give name for applet
+- that: Google Drive -> Add row to spreadsheet
+- Spreadsheet name:
+- Formatted row:
+```
+=TIMEVALUE(SUBSTITUTE("{{OccurredAt}}";" at ";" "))+DATEVALUE(SUBSTITUTE("{{OccurredAt}}";" at ";" ")) ||| {{EventName}} ||| {{Value1}} ||| {{Value2}} ||| {{Value3}} ||| =ROUND({{Value3}}/3)
+```
+- Drive folder path: IFTTT
+
+After 2000 lines new file is created (not tested).
+
 Google Docs doesn't recognize date-/time-format without this:
 ```
 =TIMEVALUE(SUBSTITUTE("{{OccurredAt}}";" at ";" "))+DATEVALUE(SUBSTITUTE("{{OccurredAt}}";" at ";" "))
