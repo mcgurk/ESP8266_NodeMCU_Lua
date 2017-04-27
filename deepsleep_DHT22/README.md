@@ -1,6 +1,10 @@
 Needed for waking up from deepsleep:  
 NodeMCU: RST -> GPIO16 / D0  
-ESP-201: RST -> XPD (pin8, GPIO16) (take red led away to get more power savings)
+ESP-201: 
+- RST -> XPD (pin8, GPIO16) 
+- 22k: 3.3V - CHIP_EN
+- 22k: GND - IO15
+- take red led away to get more power savings
 
 No need to test if dht.read is nil because failed read gets -999 and -999.  
 There is no problem with adc.readvdd33(0) also because it gets 65535 if failed.  
