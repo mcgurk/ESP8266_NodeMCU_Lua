@@ -10,8 +10,6 @@ No need to test if dht.read is nil because failed read gets -999 and -999.
 There is no problem with adc.readvdd33(0) also because it gets 65535 if failed.  
 
 todo:  
-- 2s for DHT22 and then 0,1s for netloop  
-- maximum time (10s) and then deepsleep  
 - test if dhtpower pin is down in deepsleep (goes about 0,12V. I put it implicity LOW)
 - check how much time one wakeperiod takes
 
