@@ -8,7 +8,9 @@
 - 22k: GND - IO15 (10k would be better?)
 - 220µF: GND - 3.3V (how to know which is right capacitance? how about type of capacitor?)
 - take red led away to get more power savings
-- https://www.letscontrolit.com/wiki/index.php/Power
+- Current:
+https://www.youtube.com/watch?v=6SdyImetbp8  
+https://www.letscontrolit.com/wiki/index.php/Power
 An extra capacitor is needed with value between 1uF and 10uF. Preferable a tantalum type because of its excellent high frequency properties. This capacitor can best be placed as close to the module as possible
 - Voltage:
 https://www.reddit.com/r/esp8266/comments/329nxo/17v_current_consumption_power_usage/
