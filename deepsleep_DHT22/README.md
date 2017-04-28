@@ -11,7 +11,12 @@
 - Current:
 https://www.youtube.com/watch?v=6SdyImetbp8  
 https://www.letscontrolit.com/wiki/index.php/Power
-An extra capacitor is needed with value between 1uF and 10uF. Preferable a tantalum type because of its excellent high frequency properties. This capacitor can best be placed as close to the module as possible
+An extra capacitor is needed with value between 1uF and 10uF. Preferable a tantalum type because of its excellent high frequency properties. This capacitor can best be placed as close to the module as possible  
+Deepsleep current depends heavily from Vcc:
+* 3V -> 12uA
+* 3.3V -> 23uA
+* 3.5V -> 60uA
+* 3.6V -> 100uA
 - Voltage:
 https://www.reddit.com/r/esp8266/comments/329nxo/17v_current_consumption_power_usage/
 According to specs, the module works between 1.7V - 3.6V. The chip itself is only stable from ~2.5V-~4.2V according to thread. I used 3xAA Eneloop: at start almost 4.5V!
