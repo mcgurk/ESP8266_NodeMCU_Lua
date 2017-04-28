@@ -10,6 +10,10 @@
 - take red led away to get more power savings
 - https://www.letscontrolit.com/wiki/index.php/Power
 An extra capacitor is needed with value between 1uF and 10uF. Preferable a tantalum type because of its excellent high frequency properties. This capacitor can best be placed as close to the module as possible
+- Voltage:
+https://www.reddit.com/r/esp8266/comments/329nxo/17v_current_consumption_power_usage/
+According to specs, the module works between 1.7V - 3.6V. The chip itself is only stable from ~2.5V-~4.2V according to thread. I used 3xAA Eneloop: at start almost 4.5V!
+
 
 #### Misc
 No need to test if dht.read is nil because failed read gets -999 and -999.  
