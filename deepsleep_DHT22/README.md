@@ -29,7 +29,7 @@ https://nodemcu-build.com/
 - (adc dht file gpio http net node tmr uart wifi)
 
 https://github.com/marcelstoer/nodemcu-pyflasher
-- ESP-201: RTS -> RST, DTR -> IO0
+- ESP-201: GND -> GND, 3.3V -> 3.3V, RX -> TX, TX -> RX, RTS -> RST, DTR -> IO0
 
 ### Settings (must do one time only)
 - adc.force_init_mode(adc.INIT_VDD33)
