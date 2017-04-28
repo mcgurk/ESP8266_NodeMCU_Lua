@@ -12,14 +12,14 @@
 No need to test if dht.read is nil because failed read gets -999 and -999.  
 There is no problem with adc.readvdd33(0) also because it gets 65535 if failed.  
 
+If no wifi-connection
+HTTP client: DNS failed for maker.ifttt.com
+comes in 5s.  
+
 todo:  
 - test if dhtpower pin is down in deepsleep (goes about 0,12V. I put it implicity LOW)
 - check how much time one wakeperiod takes
 - 22k in IO15 (RTS) is quite high. Does it work with e.g. MAX3232?
-
-If no wifi-connection
-HTTP client: DNS failed for maker.ifttt.com
-comes in 5s.
 
 ### Lua
 https://nodemcu-build.com/
