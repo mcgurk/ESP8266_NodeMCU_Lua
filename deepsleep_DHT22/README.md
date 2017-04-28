@@ -4,6 +4,7 @@ ESP-201:
 - RST -> XPD (pin8, GPIO16) 
 - 22k: 3.3V - CHIP_EN
 - 22k: GND - IO15
+- 220µF: GND - 3.3V
 - take red led away to get more power savings
 
 No need to test if dht.read is nil because failed read gets -999 and -999.  
