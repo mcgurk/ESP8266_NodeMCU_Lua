@@ -1,11 +1,9 @@
-Needed for waking up from deepsleep:
-
 #### NodeMCU
-- RST -> GPIO16 / D0
+- RST -> GPIO16 / D0 (needed for waking up from deepsleep)
 - USB-Serial-port-chip takes some current all the time (3-4mA)
 
 #### ESP-201
-- RST -> XPD (pin8, GPIO16) 
+- RST -> XPD (pin8, GPIO16) (needed for waking up from deepsleep)
 - 22k: 3.3V - CHIP_EN (10k would be better?)
 - 22k: GND - IO15 (10k would be better?)
 - 220µF: GND - 3.3V (how to know which is right capacitance? how about type of capacitor?)
