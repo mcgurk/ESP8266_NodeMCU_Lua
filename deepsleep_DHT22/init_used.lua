@@ -1,4 +1,5 @@
--- (this file was used over 1 year at top of the shelf)
+-- this file was used with ESP-201 over 1 year at top of the shelf
+-- there were a bug: timer2 was never stopped if init.lua wanted to be interrupted
 datapin = 2 -- GPIO4, ESP-201: IO4
 powerpin = 1 -- GPIO5, ESP-201: IO5
 button = 6 -- GPIO12, ESP-201: IO12
@@ -44,6 +45,7 @@ gpio.trig(button, "down", function()
     gpio.mode(button, gpio.INPUT) -- disable interrupt
     tmr.stop(0) -- stop timer
     tmr.stop(1) -- stop led blinking
+    tmr.stop(2) -- stop deepsleep timer
     print(node.bootreason())
     print("init.lua interrupted!")
   end)
