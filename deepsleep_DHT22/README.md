@@ -40,6 +40,9 @@ todo:
 - check how much time one wakeperiod takes
 - 22k in IO15 (RTS) is quite high. Does it work with e.g. MAX3232? Measured 0,19V when connected to CTS.
 
+Stoppin timers:
+`tmr.stop(2) tmr.stop(1) tmr.stop(0)`
+
 ### Lua
 https://nodemcu-build.com/
 - ADC
