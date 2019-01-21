@@ -103,17 +103,17 @@ Google Docs doesn't recognize date-/time-format without this:
 ### Utils
 
 ```
-cat("filename"):
+-- cat("filename"):
 function cat(filename) file.open(filename, "r") print(file.read()) file.close() end
 
 function cat(filename) file.open(filename) while true do line = file.readline() if (line == nil) then file.close() break end line = string.gsub(line, "[\r\n]", "") print(line) end end
 
-ls():
+-- ls():
 ls = function() for k,v in pairs(file.list()) do print("name:"..k..", size:"..v) end end
 
-df():
+-- df():
 df = function() local r, u, t = file.fsinfo() print("\nFile system info:\nTotal : "..t.."\nUsed : "..u.."\nRemain: "..r.."\n") end
 
-dir():
+-- dir():
 dir = function() ls() df() end
 ```
